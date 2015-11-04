@@ -21,8 +21,11 @@ void shell_show_commands();
 void shell_exit();
 void whoami();
 void show_keyboard();
-void modifie_colors();
+void modify_colors();
 void set_screensaver_time();
+void beep();
+void songs();
+void piano();
 
 char* time_str = "Shows the time and the date";
 char* help_str = "shows all available commands";
@@ -32,5 +35,8 @@ char* keyboard_str = "shows the keyboard distribution graphically";
 char* modi_str = "change the console set of colours";
 char* clear_str = "clear the screen";
 char* saver_str = "change the time till the screensaver appears";
+char* piano_str= "start typing and listen to the sounds of the piano";
+char* songs_str= "choose a song and listen to it";
+char * beep_str= "listen to the beep";
 
 #endif

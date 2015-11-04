@@ -1,7 +1,7 @@
 #include "lib.h"
 #include "call80.h"
 
-void modifie_colors(){
+void modify_colors(){
 	print_message("Select Colors:\n",0xFF);
 	print_message("1- Black Background, Green Letters,  Red Numbers  (default)\n",0xFF);
 	print_message("2- Blue Background,  White Letters,  Green Numbers  \n",0xFF);
