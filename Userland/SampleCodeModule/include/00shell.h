@@ -35,8 +35,8 @@ char* keyboard_str = "shows the keyboard distribution graphically";
 char* modi_str = "change the console set of colours";
 char* clear_str = "clear the screen";
 char* saver_str = "change the time till the screensaver appears";
-char* piano= "start typing and listen to the sounds of the piano";
-char* songs= "choose a song and listen to it";
-char * beep= "listen to the beep";
+char* piano_str= "start typing and listen to the sounds of the piano";
+char* songs_str= "choose a song and listen to it";
+char * beep_str= "listen to the beep";
 
 #endif

@@ -31,9 +31,9 @@ int main(){
 	init_commands(5, "keyboard" , keyboard_str, &show_keyboard);
 	init_commands(6, "colors" ,modi_str, &modify_colors);
 	init_commands(7, "screen time", saver_str, &set_screensaver_time);
-	init_commands(8,"piano",piano, &piano);
-	init_commands(9,"songs",songs, &songs);
-	init_commands(10,"beep",beep,&beep);
+	init_commands(8,"piano",piano, &piano_str);
+	init_commands(9,"songs",songs, &songs_str);
+	init_commands(10,"beep",beep,&beep_str);
 	while(1){
 		shell_command();
 	}
