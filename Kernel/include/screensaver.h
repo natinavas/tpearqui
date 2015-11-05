@@ -8,7 +8,7 @@
 #include "sys_lib.h"
 #include "sys.h"
 
-void maggie();
+void alien();
 void show_screensaver();
 int validateScreenTime(int time);
 
