@@ -65,3 +65,12 @@ void print_message(char* message, uint8_t mod){
 	}
 }
 
+void print_number(uint32_t n){
+	if(n<10){
+		sys_write(n + '0',0xFF);
+	}else{
+		print_number(n/10);
+		sys_write((n%10)+'0',0xFF);
+	}
+}
+

@@ -80,17 +80,19 @@ void keyboard_handler(uint8_t scancode){
 }
 
 void piano_handler(uint8_t scancode){
-	if(scancode != 250){
-	print_message("entro a piano_handler", 0xFF);
-	 if(sleep_time >= screensaver_time){
- 		restore_screen();
+		print_number(kbdus[scancode]);
+		if(scancode != 250){
+			
+		print_message("entro a piano_handler", 0xFF);
+		 if(sleep_time >= screensaver_time){
+	 		restore_screen();
 	
- 	}else{
- 		piano(kbdus[scancode]);
- 	}
+	 	}else{
+	 		piano(kbdus[scancode]);
+	 	}
 
- 	sleep_time = 0;
-}
+	 	sleep_time = 0;
+	}
  	return;
 }
 

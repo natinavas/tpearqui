@@ -9,16 +9,19 @@ void beep(){
 }
 
 void piano(uint8_t frec){
-	
-	while(frec != 9121){
-		
+	while(1){
+		if(frec == 8){
+			break;
+		}
 		if(frec == 0){
 			_int_end_sound();
 		}else{
+	print_message("!0", 0xFF);
 			_int_start_sound(frec);
 		}
 	
 	}
+	
 
 	print_message("ya me fui aprete enter", 0xFF);
 }
