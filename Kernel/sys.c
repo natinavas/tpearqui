@@ -7,7 +7,7 @@
 //syscall 5 ---> clear screen
 // syscall 6 ---> palabra que se escribio.
 //syscall 7 ---> beep
-//extern void _int_start_sound();
+extern void _int_start_sound();
 //extern void _int_piano_hand();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
@@ -40,12 +40,11 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 			return validateScreenTime(arg1);
 			break;
 		case BEEP:
-			beep();
-		 	//_int_start_sound();
+		 	//beep();
+		 	_int_start_sound(4560);
 			break;
 		case PIANO:
-			print_message("entro a la interrupcion", 0xFF);
-			//_int_piano_hand();
+			setPiano();
 			break;
 			
 	}

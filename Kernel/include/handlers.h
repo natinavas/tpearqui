@@ -8,6 +8,7 @@
 
 void timer_handler();
 void keyboard_handler(uint8_t scancode);
+void setPiano();
 
 extern void shell_show_screensaver();
 extern void shell_print_standby();

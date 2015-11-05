@@ -2,6 +2,7 @@
 #include "00shell.h"
 #include "call80.h"
 #include "lib.h"
+#include "sounds.h"
 
 
 Command commands[11];
@@ -20,7 +21,6 @@ extern uint8_t rodata;
 
 int main(){
 	memset(&bss, 0, &endOfBinary - &bss);
-
 	shell_erase_screen();
 	print_message("Bienvenidos a pianitOS\n", 0x12);
 	init_commands(0,"clear", clear_str ,&shell_erase_screen);

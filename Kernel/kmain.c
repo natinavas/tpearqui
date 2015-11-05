@@ -1,5 +1,8 @@
 #include "include/typedef.h"
 
+#include "sounds.h"
+
+
 IDT_entry* IDT;
 
 extern void _sti();
@@ -9,12 +12,16 @@ extern void _int_keyboard_hand();
 extern int _int80_hand();
 extern void _int_start_sound();
 
+
+
+
 void setup_IDT_entry (int index,uint16_t selector, uint64_t offset);
 void set_interrupts();
 
 int kmain(){
 	IDT = 0;
 	set_interrupts();
+	//beep();
 	//shell_init();
 	return 0;
 }

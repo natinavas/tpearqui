@@ -111,49 +111,40 @@ haltcpu:
 	hlt
 	ret
 
-_int_piano_hand:				; Handler de INT 9 ( Teclado )
-    push   	rdi
-    push   	rax                      ; Se salvan los registros
 
-    xor     rax,rax
-	in 		al, 60h	              ;Leo el puerto del teclado
-	and     rax,0x00000000000000FF
-	xor     rdi,rdi
-	mov     rdi,rax	            ;Le envio el SCAN CODE como parametro a la funcion int_09
-	call 	piano_handler	;Llamo a la interrupcion que maneja el SCAN CODE en C
-
-
-	mov		al,20h			; Envio de EOI generico al PIC
-	out		20h,al
-
-	pop     rax
-	pop     rdi
-;	iretq
-	ret
-	
 
 _int_start_sound:
 		
-       mov     al, 182         ; Prepare the speaker for the
-       out     43h, al         ;  note.
-       mov     ax, 4560        ; Frequency number (in decimal)
-        
-		
-		                        ;  for middle C.
-       out     42h, al         ; Output low byte.
-       mov     al, ah          ; Output high byte.
-       out     42h, al 
-       in      al, 61h         ; Turn on note (get value from
+        mov     al, 182         ; Prepare the speaker for the
+        out     43h, al         ;  note.
+        mov     rax, rdi         ; Frequency number (in decimal)
+                                ;  for middle C.
+        out     42h, al         ; Output low byte.
+        mov     al, ah          ; Output high byte.
+        out     42h, al 
+        in      al, 61h         ; Turn on note (get value from
                                 ;  port 61h).
         or      al, 00000011b   ; Set bits 1 and 0.
         out     61h, al         ; Send new value.
-				
+;        mov     bx, 320          ; Pause for duration of note.
+;.pause1:
+;        mov     cx, 65535
+;.pause2:
+;        dec     cx
+;        jne     .pause2
+;        dec     bx
+;        jne     .pause1
+;        in      al, 61h         ; Turn off note (get value from
+;                                ;  port 61h).
+;        and     al, 11111100b   ; Reset bits 1 and 0.
+;        out     61h, al         ; Send new value.
+	ret	
 				
 _int_end_sound:
- 			in      al, 61h         ; Turn off note (get value from
- 		                             ;  port 61h).
- 			and al, -4
- 			out 61h, al
- 			ret
+ 	in      al, 61h         ; Turn off note (get value from
+ 		                    ;  port 61h).
+ 	and al, -4
+ 	out 61h, al
+ 	ret
 	
 	
