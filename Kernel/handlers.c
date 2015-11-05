@@ -80,7 +80,7 @@ void keyboard_handler(uint8_t scancode){
 }
 
 void piano_handler(uint8_t scancode){
-		print_number(kbdus[scancode]);
+		print_number(scancode);
 		if(scancode != 250){
 			
 		print_message("entro a piano_handler", 0xFF);

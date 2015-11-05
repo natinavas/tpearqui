@@ -16,7 +16,6 @@ void piano(uint8_t frec){
 		if(frec == 0){
 			_int_end_sound();
 		}else{
-	print_message("!0", 0xFF);
 			_int_start_sound(frec);
 		}
 	
