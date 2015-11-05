@@ -1,4 +1,5 @@
 #include "sounds.h"
+#include <stdint.h>
 
 extern void _int_start_sound();
 
@@ -8,5 +9,16 @@ void beep(){
 }
 
 void piano(uint8_t frec){
-	_int_play_sound(frec);
+	
+	while(frec != 9121){
+		
+		if(frec == 0){
+			_int_end_sound();
+		}else{
+			_int_start_sound(frec);
+		}
+	
+	}
+
+	print_message("ya me fui aprete enter", 0xFF);
 }

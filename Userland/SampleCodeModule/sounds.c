@@ -7,10 +7,10 @@ void beep(){
 
 void songs(){
 	print_message("Choose the masterpiece you wish to hear: \n",0xFF);
-
 }
 
 void piano(){
+	
 	print_message(" _______________________________________ \n",0xFF);
 	print_message("|  | | | |  |  | | | | | |  |  | | | |  |\n",0xFF);
 	print_message("|  | | | |  |  | | | | | |  |  | | | |  |\n",0xFF);

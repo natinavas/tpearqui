@@ -1,7 +1,6 @@
 #include <stdint.h>
 #include "include/handlers.h"
 
-
 static int time = 0;
 uint16_t sleep_time = 0;
 uint32_t screensaver_time = 5 * 1000 / 55;
@@ -12,7 +11,7 @@ uint32_t screensaver_time = 5 * 1000 / 55;
   	0, 4304, 0, 0, 0,	/* Backspace */
     0,			/* Tab */
  	9121, 8126, 7239, 6833,	/* 19 */
- 	6087, 5423, 4831, 0, 4560, 0, 0, 0, 0,	/* Enter key */
+ 	6087, 5423, 4831, 0, 4560, 0, 0, 0, 8,	/* Enter key */
     0,			/* 29   - Control */
 	0, 3834, 0, 3224, 2873, 2559, 0, 0, 0, 0,	/* 39 */
 	0, 0,   0,		/* Left shift */
@@ -20,7 +19,7 @@ uint32_t screensaver_time = 5 * 1000 / 55;
  	2280, 0, 0, 0,   0,				/* Right shift */
   	0,
     0,	/* Alt */
-  	0,	/* Space bar */
+  	8,	/* Space bar */
     0,	/* Caps lock */
     0,	/* 59 - F1 key ... > */
     0,   0,   0,   0,   0,   0,   0,   0,
@@ -45,8 +44,6 @@ uint32_t screensaver_time = 5 * 1000 / 55;
     0,	/* F12 Key */
     0,	/* All other keys are undefined */
 };
-
-
 
 void timer_handler(){
 	time++;
@@ -80,20 +77,21 @@ void keyboard_handler(uint8_t scancode){
 		}
 		sleep_time = 0;
 	}
-
 }
 
 void piano_handler(uint8_t scancode){
+	if(scancode != 250){
+	print_message("entro a piano_handler", 0xFF);
+	 if(sleep_time >= screensaver_time){
+ 		restore_screen();
 	
-	if(sleep_time >= screensaver_time){
-		restore_screen();
-	
-	}else{
-		piano(kdbus[scancode]);
-	}
-	
-	sleep_time = 0;
-	return;
+ 	}else{
+ 		piano(kbdus[scancode]);
+ 	}
+
+ 	sleep_time = 0;
+}
+ 	return;
 }
 
 

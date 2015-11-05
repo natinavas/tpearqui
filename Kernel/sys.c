@@ -44,6 +44,7 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 		 	_int_start_sound();
 			break;
 		case PIANO:
+			print_message("entro a la interrupcion", 0xFF);
 			_int_piano_hand();
 			break;
 			

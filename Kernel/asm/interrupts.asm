@@ -10,7 +10,7 @@ GLOBAL _int_keyboard_hand
 GLOBAL _int_piano_hand
 GLOBAL _int80_hand
 GLOBAL _int_start_sound
-
+GLOBAL _int_end_sound
 GLOBAL haltcpu
 GLOBAL _call_int80
 
@@ -128,8 +128,9 @@ _int_piano_hand:				; Handler de INT 9 ( Teclado )
 
 	pop     rax
 	pop     rdi
-	iretq
-
+;	iretq
+	ret
+	
 
 _int_start_sound:
 		
@@ -148,11 +149,11 @@ _int_start_sound:
         out     61h, al         ; Send new value.
 				
 				
-# _int_end_sound:
-# 			in      al, 61h         ; Turn off note (get value from
-# 		                             ;  port 61h).
-# 			and al, -4
-# 			out 61h, al
-# 			ret
+_int_end_sound:
+ 			in      al, 61h         ; Turn off note (get value from
+ 		                             ;  port 61h).
+ 			and al, -4
+ 			out 61h, al
+ 			ret
 	
 	
