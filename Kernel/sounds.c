@@ -1,10 +1,15 @@
 #include "sounds.h"
 #include <stdint.h>
 
+
+
+
+void play_sound(uint32_t nFrequence); 
+
 extern void outb(uint8_t, uint8_t);
 extern uint8_t inb(uint8_t);
 
-void play_sound(uint32_t nFrequence); 
+
 
 //extern void _int_start_sound();
 //extern void beep();
@@ -41,6 +46,7 @@ void play_sound(uint32_t nFrequence);
  
  	outb(0x61, tmp);
  }
+
 
 void piano(uint8_t frec){
 	while(1){
