@@ -8,11 +8,10 @@ GLOBAL _write_port
 GLOBAL _int_timer_hand
 GLOBAL _int_keyboard_hand
 GLOBAL _int80_hand
-GLOBAL _int_sound_hand
+GLOBAL _int_start_sound
 
 GLOBAL haltcpu
 GLOBAL _call_int80
-
 
 EXTERN timer_handler
 EXTERN keyboard_handler
@@ -110,31 +109,28 @@ haltcpu:
 
 
 
-_int_sound_hand:
-
-        mov     al, 182         ; Prepare the speaker for the
-        out     43h, al         ;  note.
-        mov     ax, 4560        ; Frequency number (in decimal)
-                                ;  for middle C.
-        out     42h, al         ; Output low byte.
-        mov     al, ah          ; Output high byte.
-        out     42h, al 
-        in      al, 61h         ; Turn on note (get value from
+_int_start_sound:
+		
+       mov     al, 182         ; Prepare the speaker for the
+       out     43h, al         ;  note.
+       mov     ax, 4560        ; Frequency number (in decimal)
+        
+		
+		                        ;  for middle C.
+       out     42h, al         ; Output low byte.
+       mov     al, ah          ; Output high byte.
+       out     42h, al 
+       in      al, 61h         ; Turn on note (get value from
                                 ;  port 61h).
         or      al, 00000011b   ; Set bits 1 and 0.
         out     61h, al         ; Send new value.
-        mov     bx, 25          ; Pause for duration of note.
-.pause1:
-        mov     cx, 65535
-.pause2:
-        dec     cx
-        jne     .pause2
-        dec     bx
-        jne     .pause1
-        in      al, 61h         ; Turn off note (get value from
-                                ;  port 61h).
-        and     al, 11111100b   ; Reset bits 1 and 0.
-        out     61h, al         ; Send new value.
-
-
-
+				
+				
+# _int_end_sound:
+# 			in      al, 61h         ; Turn off note (get value from
+# 		                             ;  port 61h).
+# 			and al, -4
+# 			out 61h, al
+# 			ret
+	
+	

@@ -6,6 +6,8 @@
 #include "clean_buffer.h"
 #include "rtc.h"
 #include "screensaver.h"
+#include "sounds.h"
+
 
 #define WRITE 1
 #define GET_CHAR 2
@@ -15,6 +17,7 @@
 #define RTC_WRITE 6
 #define COLORS 7
 #define SCR_TIME 8
+#define BEEP 9
 
 char read(char* buff, uint8_t size);
 char read_char();

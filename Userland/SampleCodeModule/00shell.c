@@ -4,9 +4,9 @@
 #include "lib.h"
 
 
-Command commands[8];
+Command commands[11];
 char comm[20];
-int number_of_commands = 8;
+int number_of_commands = 11;
 char aux;
 char name[20] = {0};
 
@@ -22,7 +22,7 @@ int main(){
 	memset(&bss, 0, &endOfBinary - &bss);
 
 	shell_erase_screen();
-	print_message("Bienvenidos a ArquiMedes\n", 0x12);
+	print_message("Bienvenidos a pianitOS\n", 0x12);
 	init_commands(0,"clear", clear_str ,&shell_erase_screen);
 	init_commands(1,"time", time_str , &showRTC);
 	init_commands(2,"help" , help_str, &shell_show_commands);
@@ -31,9 +31,9 @@ int main(){
 	init_commands(5, "keyboard" , keyboard_str, &show_keyboard);
 	init_commands(6, "colors" ,modi_str, &modify_colors);
 	init_commands(7, "screen time", saver_str, &set_screensaver_time);
-	init_commands(8,"piano",piano, &piano_str);
-	init_commands(9,"songs",songs, &songs_str);
-	init_commands(10,"beep",beep,&beep_str);
+	init_commands(8,"piano",piano_str,&piano);
+	init_commands(9,"songs",songs_str,&songs);
+	init_commands(10,"beep", beep_str,&beep);
 	while(1){
 		shell_command();
 	}

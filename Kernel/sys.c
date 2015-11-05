@@ -6,6 +6,8 @@
 //syscall 4 ---> modifica el modificador del video
 //syscall 5 ---> clear screen
 // syscall 6 ---> palabra que se escribio.
+//syscall 7 ---> beep
+extern void _int_start_sound();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 	char c;
@@ -36,6 +38,11 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 		case SCR_TIME:
 			return validateScreenTime(arg1);
 			break;
+		case BEEP:
+			//beep();
+		 	_int_start_sound();
+			break;
+			
 	}
 	return 0;
 }

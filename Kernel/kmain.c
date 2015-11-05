@@ -7,14 +7,13 @@ extern void _write_port(char port,char value);
 extern void _int_timer_hand();
 extern void _int_keyboard_hand();
 extern int _int80_hand();
-extern void _int_sound_hand();
+extern void _int_start_sound();
 
 void setup_IDT_entry (int index,uint16_t selector, uint64_t offset);
 void set_interrupts();
 
 int kmain(){
 	IDT = 0;
-	_int_sound_hand();
 	set_interrupts();
 	//shell_init();
 	return 0;
@@ -24,10 +23,9 @@ void set_interrupts() {
 	setup_IDT_entry(0x20,0x08,(uint64_t) &_int_timer_hand);
 	setup_IDT_entry(0x21,0x08,(uint64_t) &_int_keyboard_hand);
 	setup_IDT_entry(0x80,0x08,(uint64_t) &_int80_hand);
-	setup_IDT_entry(0x61,0x08,(uint64_t) &_int_sound_hand);
+	setup_IDT_entry(0x61,0x08,(uint64_t) &_int_start_sound);
 	_sti();
 	_write_port(0x21,0xFC);
-	_int_sound_hand();
 }
 
 void setup_IDT_entry(int index,uint16_t selector, uint64_t offset){

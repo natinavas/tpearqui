@@ -11,6 +11,7 @@
 #define INT_RTC_WRITE 6
 #define INT_COLORS 7
 #define INT_SCR_TIME 8
+#define INT_BEEP 9
 
 
 void * memset(void * destination, int32_t character, uint64_t length);
