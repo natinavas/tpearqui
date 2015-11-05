@@ -8,6 +8,7 @@
 // syscall 6 ---> palabra que se escribio.
 //syscall 7 ---> beep
 extern void _int_start_sound();
+extern void _int_piano_hand();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 	char c;
@@ -41,6 +42,9 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 		case BEEP:
 			//beep();
 		 	_int_start_sound();
+			break;
+		case PIANO:
+			_int_piano_hand();
 			break;
 			
 	}

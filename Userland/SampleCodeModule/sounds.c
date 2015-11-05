@@ -21,5 +21,6 @@ void piano(){
 	print_message("|   |   |   |   |   |   |   |   |   |   |\n",0xFF);
 	print_message("|___|___|___|___|___|___|___|___|___|___|\n\n ",0xFF);
 	
+	_call_int80(INT_PIANO);
 	
 }

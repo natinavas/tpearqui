@@ -18,6 +18,8 @@
 #define COLORS 7
 #define SCR_TIME 8
 #define BEEP 9
+#define PIANO 10
+#define SONGS 11
 
 char read(char* buff, uint8_t size);
 char read_char();

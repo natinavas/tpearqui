@@ -129,7 +129,6 @@ int is_alpha(unsigned char scancode){
 uint8_t scancode_to_char(uint8_t c) {
 	int key;
 	
-	
 	//Con este if determino si imprimo en Mayuscula o Minuscula
 	if( caps_lock == 0 ){
 		if( left_shift || right_shift ){

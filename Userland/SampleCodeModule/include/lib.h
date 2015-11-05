@@ -12,6 +12,8 @@
 #define INT_COLORS 7
 #define INT_SCR_TIME 8
 #define INT_BEEP 9
+#define INT_PIANO 10
+#define INT_SONGS 11
 
 
 void * memset(void * destination, int32_t character, uint64_t length);

@@ -7,6 +7,7 @@ GLOBAL _write_port
 
 GLOBAL _int_timer_hand
 GLOBAL _int_keyboard_hand
+GLOBAL _int_piano_hand
 GLOBAL _int80_hand
 GLOBAL _int_start_sound
 
@@ -16,6 +17,9 @@ GLOBAL _call_int80
 EXTERN timer_handler
 EXTERN keyboard_handler
 EXTERN sys_manager
+EXTERN piano_handler
+
+
 
 SECTION .text
 
@@ -107,6 +111,24 @@ haltcpu:
 	hlt
 	ret
 
+_int_piano_hand:				; Handler de INT 9 ( Teclado )
+    push   	rdi
+    push   	rax                      ; Se salvan los registros
+
+    xor     rax,rax
+	in 		al, 60h	              ;Leo el puerto del teclado
+	and     rax,0x00000000000000FF
+	xor     rdi,rdi
+	mov     rdi,rax	            ;Le envio el SCAN CODE como parametro a la funcion int_09
+	call 	piano_handler	;Llamo a la interrupcion que maneja el SCAN CODE en C
+
+
+	mov		al,20h			; Envio de EOI generico al PIC
+	out		20h,al
+
+	pop     rax
+	pop     rdi
+	iretq
 
 
 _int_start_sound:

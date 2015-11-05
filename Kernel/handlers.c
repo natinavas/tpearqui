@@ -41,4 +41,12 @@ void keyboard_handler(uint8_t scancode){
 
 }
 
+void piano_handler(uint8_t scancode){
+	
+	
+	
+	
+	return;
+}
+
 
