@@ -22,7 +22,17 @@ extern uint8_t rodata;
 int main(){
 	memset(&bss, 0, &endOfBinary - &bss);
 	shell_erase_screen();
-	print_message("Bienvenidos a pianitOS\n", 0x12);
+	
+	print_message("########  ####    ###    ##    ## #### ########          #######   ######  \n", 0xFF);
+	print_message("##     ##  ##    ## ##   ###   ##  ##     ##            ##     ## ##    ## \n", 0xFF);
+	print_message("##     ##  ##   ##   ##  ####  ##  ##     ##            ##     ## ##       \n", 0xFF);
+	print_message("########   ##  ##     ## ## ## ##  ##     ##    ####### ##     ##  ######  \n", 0xFF);
+	print_message("##         ##  ######### ##  ####  ##     ##            ##     ##       ## \n", 0xFF);
+	print_message("##         ##  ##     ## ##   ###  ##     ##            ##     ## ##    ## \n", 0xFF);
+	print_message("##        #### ##     ## ##    ## ####    ##             #######   ######  \n\n", 0xFF);
+	
+	
+	
 	init_commands(0,"clear", clear_str ,&shell_erase_screen);
 	init_commands(1,"time", time_str , &showRTC);
 	init_commands(2,"help" , help_str, &shell_show_commands);
