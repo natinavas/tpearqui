@@ -1,9 +1,28 @@
 #include <stdint.h>
 #include "keyboard.h"
 
+
+
 uint8_t left_shift = 0;
 uint8_t right_shift = 0;
 uint8_t caps_lock = 0;
+
+uint8_t freq[13][2]= {
+	{'w', 277},
+	{'e', 311},
+	{'t', 360},
+	{'y', 415},
+	{'u', 466},
+	{'a', 261},	//030
+	{'s', 293},	//031
+	{'d', 330},	//032
+	{'f', 350},	//033
+	{'g', 391},	//034
+	{'h', 440},	//035
+	{'j', 494},	//036
+	{'k', 494},
+};
+
 
 uint8_t keyboard[180][3] = {
 	{0,0,0},//000
@@ -43,7 +62,7 @@ uint8_t keyboard[180][3] = {
 	{'g','G',391},	//034
 	{'h','H',440},	//035
 	{'j','J',494},	//036
-	{'k','K',523},	//037
+	{'k','K',494},	//037
 	{'l','L',0},	//038
 	{';',':',0},	//039
 	{'\'','\"',0},	//040
@@ -226,12 +245,20 @@ uint8_t check_special_key(uint8_t c){
 	}
 	return 1;
 }
+
 int is_alpha(unsigned char scancode){
 	return ( (keyboard[scancode][0] >= (unsigned char)'a')  && (keyboard[scancode][0] <= (unsigned char)'z') );
 }
 
-int getFrec(uint8_t scancode){
-	return keyboard[scancode][2];
+int getFrec(unsigned char caracter){
+	print_number(caracter - 'a');
+	int i = 0;
+	for(i = 0; i< 13; i++){
+		if(freq[i][0] == caracter){
+			return freq[i][1];
+		}
+	}
+	return 0;
 }
 
 uint8_t scancode_to_char(uint8_t c) {
