@@ -40,7 +40,7 @@ void keyboard_handler(uint32_t scancode){
 				//print_number(scancode);
 				uint32_t frec = getFrec(scancode);
 				if(frec == 8){
-					print_message("\n", 0xFF);
+					sys_write('\n',0xFF);
 					piano = 0;
 					}
 				playPiano(frec);
