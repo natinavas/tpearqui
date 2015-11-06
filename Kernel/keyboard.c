@@ -7,24 +7,7 @@ uint8_t left_shift = 0;
 uint8_t right_shift = 0;
 uint8_t caps_lock = 0;
 
-uint8_t freq[13][2]= {
-	{'w', 277},
-	{'e', 311},
-	{'t', 360},
-	{'y', 415},
-	{'u', 466},
-	{'a', 261},	//030
-	{'s', 293},	//031
-	{'d', 330},	//032
-	{'f', 350},	//033
-	{'g', 391},	//034
-	{'h', 440},	//035
-	{'j', 494},	//036
-	{'k', 494},
-};
-
-
-uint8_t keyboard[180][3] = {
+uint32_t keyboard[180][3] = {
 	{0,0,0},//000
 	{0,0,8},//001 ESCAPE
 	{'1','!',0},	//002
@@ -42,12 +25,12 @@ uint8_t keyboard[180][3] = {
 	{'\b','\b',0},	//014 BACKSPACE
 	{'\t','\t',0},	//015 TAB
 	{'q','Q',0},	//016
-	{'w','W',277},	//017
-	{'e','E',311},	//018
+	{'w','W',4304},	//017
+	{'e','E',3834},	//018
 	{'r','R',0},	//019
-	{'t','T',370},	//020
-	{'y','Y',415},	//021
-	{'u','U',466},	//022
+	{'t','T',3224},	//020
+	{'y','Y',2873},	//021
+	{'u','U',2559},	//022
 	{'i','I',0},	//023
 	{'o','O',0},	//024
 	{'p','P',0},	//025
@@ -55,14 +38,14 @@ uint8_t keyboard[180][3] = {
 	{']','}',0},	//027
 	{'\n','\n',0},	//028
 	{0,0,0},//029 CTRL IZQ
-	{'a','A',261},	//030
-	{'s','S',293},	//031
-	{'d','D',330},	//032
-	{'f','F',350},	//033
-	{'g','G',391},	//034
-	{'h','H',440},	//035
-	{'j','J',494},	//036
-	{'k','K',494},	//037
+	{'a','A',4560},	//030
+	{'s','S',4063},	//031
+	{'d','D',3619},	//032
+	{'f','F',3416},	//033
+	{'g','G',3043},	//034
+	{'h','H',2711},	//035
+	{'j','J',2415},	//036
+	{'k','K',2280},	//037
 	{'l','L',0},	//038
 	{';',':',0},	//039
 	{'\'','\"',0},	//040
@@ -220,7 +203,7 @@ uint8_t keyboard[180][3] = {
 	{0,0,0},//069 NUM LOCK
 	{0,0,0},//070 SCROLL LOCK
 };
-uint8_t check_special_key(uint8_t c){
+uint8_t check_special_key(uint32_t c){
 	if(c == 58){
 		if(caps_lock){
 			caps_lock = 0;
@@ -245,23 +228,16 @@ uint8_t check_special_key(uint8_t c){
 	}
 	return 1;
 }
-
 int is_alpha(unsigned char scancode){
 	return ( (keyboard[scancode][0] >= (unsigned char)'a')  && (keyboard[scancode][0] <= (unsigned char)'z') );
 }
 
-int getFrec(unsigned char caracter){
-	print_number(caracter - 'a');
-	int i = 0;
-	for(i = 0; i< 13; i++){
-		if(freq[i][0] == caracter){
-			return freq[i][1];
-		}
-	}
-	return 0;
+uint8_t getFrec(uint32_t scancode){
+	print_number(keyboard[scancode][2]);
+	return keyboard[scancode][2];
 }
 
-uint8_t scancode_to_char(uint8_t c) {
+uint8_t scancode_to_char(uint32_t c) {
 	int key;
 	
 	//Con este if determino si imprimo en Mayuscula o Minuscula

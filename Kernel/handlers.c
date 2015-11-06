@@ -31,17 +31,18 @@ void setPiano(){
 	piano =1;
 }
  
-void keyboard_handler(uint8_t scancode){
+void keyboard_handler(uint32_t scancode){
 	if(scancode != 250){
-		
 		if(sleep_time >= screensaver_time){
 			restore_screen();
 		}else{
 			if(piano == 1){
-				uint8_t frec = getFrec(scancode_to_char(scancode));
-				//print_number(frec);
-				if(frec == 8)
+				//print_number(scancode);
+				uint8_t frec = getFrec(scancode);
+				if(frec == 8){
+					print_message("\n", 0xFF);
 					piano = 0;
+					}
 				playPiano(frec);
 			}
 			else if(check_special_key(scancode)){
