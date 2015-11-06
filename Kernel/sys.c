@@ -7,6 +7,7 @@
 //syscall 5 ---> clear screen
 // syscall 6 ---> palabra que se escribio.
 //syscall 7 ---> beep
+extern void _beep();
 extern void _int_start_sound();
 //extern void _int_piano_hand();
 
@@ -41,7 +42,7 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 			break;
 		case BEEP:
 		 	//beep();
-		 	_int_start_sound(4560);
+		 	_beep();
 			break;
 		case PIANO:
 			setPiano();
