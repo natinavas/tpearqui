@@ -1,7 +1,7 @@
 #include "screensaver.h"
 
 void show_screensaver(){
-	erase_screen();
+	//erase_screen();
 	reset_current_video();
 	alien();
 }

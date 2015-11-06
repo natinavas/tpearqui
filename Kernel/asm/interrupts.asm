@@ -117,7 +117,7 @@ _int_start_sound:
 		
         mov     al, 182         ; Prepare the speaker for the
         out     43h, al         ;  note.
-        mov     rax, rdi         ; Frequency number (in decimal)
+        mov     rax, rdi        ; Frequency number (in decimal)
                                 ;  for middle C.
         out     42h, al         ; Output low byte.
         mov     al, ah          ; Output high byte.
