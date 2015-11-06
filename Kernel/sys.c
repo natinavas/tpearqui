@@ -47,6 +47,10 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 		case PIANO:
 			setPiano();
 			break;
+		case SONGS:
+			uint32_t[6] arraySong = {4560, 4063, 4560, 4063, 4560, 4560};
+			
+			break;
 			
 	}
 	return 0;

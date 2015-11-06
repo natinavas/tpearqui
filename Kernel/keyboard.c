@@ -233,7 +233,6 @@ int is_alpha(unsigned char scancode){
 }
 
 uint32_t getFrec(uint32_t scancode){
-	print_number(keyboard[scancode][2]);
 	return keyboard[scancode][2];
 }
 
