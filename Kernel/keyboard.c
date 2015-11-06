@@ -232,7 +232,7 @@ int is_alpha(unsigned char scancode){
 	return ( (keyboard[scancode][0] >= (unsigned char)'a')  && (keyboard[scancode][0] <= (unsigned char)'z') );
 }
 
-uint8_t getFrec(uint32_t scancode){
+uint32_t getFrec(uint32_t scancode){
 	print_number(keyboard[scancode][2]);
 	return keyboard[scancode][2];
 }

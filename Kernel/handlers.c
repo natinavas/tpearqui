@@ -38,7 +38,7 @@ void keyboard_handler(uint32_t scancode){
 		}else{
 			if(piano == 1){
 				//print_number(scancode);
-				uint8_t frec = getFrec(scancode);
+				uint32_t frec = getFrec(scancode);
 				if(frec == 8){
 					print_message("\n", 0xFF);
 					piano = 0;

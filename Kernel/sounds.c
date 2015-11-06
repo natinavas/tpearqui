@@ -49,7 +49,7 @@ extern void _int_end_sound();
  }
 
 
-void playPiano(uint8_t frec){
+void playPiano(uint32_t frec){
 		if(frec == 0){
 			_int_end_sound();
 		}else{
