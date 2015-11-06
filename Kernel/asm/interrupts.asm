@@ -126,18 +126,18 @@ _int_start_sound:
                                 ;  port 61h).
         or      al, 00000011b   ; Set bits 1 and 0.
         out     61h, al         ; Send new value.
-;        mov     bx, 320          ; Pause for duration of note.
-;.pause1:
-;        mov     cx, 65535
-;.pause2:
-;        dec     cx
-;        jne     .pause2
-;        dec     bx
-;        jne     .pause1
-;        in      al, 61h         ; Turn off note (get value from
-;                                ;  port 61h).
-;        and     al, 11111100b   ; Reset bits 1 and 0.
-;        out     61h, al         ; Send new value.
+        mov     bx, 320          ; Pause for duration of note.
+.pause1:
+        mov     cx, 65535
+.pause2:
+        dec     cx
+        jne     .pause2
+        dec     bx
+        jne     .pause1
+        in      al, 61h         ; Turn off note (get value from
+                                ;  port 61h).
+        and     al, 11111100b   ; Reset bits 1 and 0.
+        out     61h, al         ; Send new value.
 	ret	
 				
 _int_end_sound:
