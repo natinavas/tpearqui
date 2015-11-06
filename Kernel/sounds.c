@@ -8,7 +8,7 @@ void play_sound(uint32_t nFrequence);
 
 extern void outb(uint8_t, uint8_t);
 extern uint8_t inb(uint8_t);
-extern void _song_note(uint32_t frec);
+extern void _song_note(uint32_t frec, uint32_t length);
 
 
 //extern void _int_start_sound();
@@ -17,14 +17,17 @@ extern void _int_start_sound(uint32_t nFrequence);
 extern void _int_end_sound();
 //extern void nosound();
 
-void play_song(uint32_t freqs[], uint32_t size){
+void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 	
 	uint32_t i = 0;
 	
 	for(int i=0; i<size; i++){
 		print_number(freqs[i]);
 		print_message("\n", 0xFF);
-		_song_note(freqs[i]);
+		if(i%2 == 0)
+			_song_note(freqs[i], lengths[i]);
+		else
+			_song_note(freqs[i], lengths[i]);
 	}
 	
 	

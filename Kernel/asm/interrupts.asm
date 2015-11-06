@@ -172,7 +172,7 @@ _song_note:
 	                                ;  port 61h).
         or      al, 00000011b   ; Set bits 1 and 0.
         out     61h, al         ; Send new value.
-        mov     bx, 320          ; Pause for duration of note.
+        mov     bx, si          ; Pause for duration of note.
 	.pause1:
         mov     cx, 65535
 	.pause2:
