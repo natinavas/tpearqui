@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "sys.h"
+
 //syscall 1 ---> escribo en pantalla
 //syscall 2 ---> borro caracter
 //syscall 3 ---> devuelvo el ultimo caracter
@@ -13,6 +14,10 @@ extern void _int_start_sound();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 	char c;
+
+	uint32_t arraySong[6] = {4560, 4063, 4560, 4063, 4560, 4560};
+	int i;
+	
 	switch(order){
 		case WRITE:
 			sys_write((char) arg1,(char) arg2);
@@ -48,8 +53,7 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 			setPiano();
 			break;
 		case SONGS:
-			uint32_t[6] arraySong = {4560, 4063, 4560, 4063, 4560, 4560};
-			
+			play_song(arraySong, 6);
 			break;
 			
 	}

@@ -17,11 +17,13 @@ extern void _int_start_sound(uint32_t nFrequence);
 extern void _int_end_sound();
 //extern void nosound();
 
-void play_song(uint32_t[] freqs, uint32_t size){
+void play_song(uint32_t freqs[], uint32_t size){
 	
 	uint32_t i = 0;
 	
 	for(int i=0; i<size; i++){
+		print_number(freqs[i]);
+		print_message("\n", 0xFF);
 		_song_note(freqs[i]);
 	}
 	

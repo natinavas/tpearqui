@@ -7,6 +7,7 @@
 #include "rtc.h"
 #include "screensaver.h"
 #include "sounds.h"
+#include "handlers.h"
 
 
 #define WRITE 1

@@ -7,6 +7,7 @@ void beep(){
 
 void songs(){
 	print_message("Choose the masterpiece you wish to hear: \n",0xFF);
+	_call_int80(INT_SONGS);
 }
 
 void piano(){
