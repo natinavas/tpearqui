@@ -1,9 +1,6 @@
 #include "sounds.h"
 #include <stdint.h>
 
-
-
-
 void play_sound(uint32_t nFrequence); 
 
 extern void outb(uint8_t, uint8_t);
@@ -39,9 +36,7 @@ void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 			_song_note(freqs[i], lengths[i]);
 		else
 			_song_note(freqs[i], lengths[i]);
-	}
-	
-	
+	}	
 }
 
 
@@ -72,7 +67,6 @@ void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
  //make it shutup
  void nosound() {
  	uint8_t tmp = inb(0x61) & 0xFC;
- 
  	outb(tmp, 0x61);
  }
 
