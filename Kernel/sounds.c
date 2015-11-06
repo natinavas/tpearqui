@@ -17,13 +17,24 @@ extern void _int_start_sound(uint32_t nFrequence);
 extern void _int_end_sound();
 //extern void nosound();
 
+void read_song(uint64_t songNum){
+	if(songNum == 1){
+		uint32_t arraySong[12] = {C4, F4S, G5, C4, A5, A4, B5, B4, G5, C4, A5, A4};
+		uint32_t lengths[12] = {400,25, 320, 400, 564, 234,543,766,234,300,400,500};
+		play_song(arraySong, lengths, 12);
+	}else if(songNum == 2 ){
+		uint32_t arraySong2[3] = {C4, F4S, G5};
+		uint32_t lengths2[3] = {200,250, 520};
+		play_song(arraySong2, lengths2, 3);
+	}
+}
+
+
 void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 	
 	uint32_t i = 0;
 	
 	for(int i=0; i<size; i++){
-		print_number(freqs[i]);
-		print_message("\n", 0xFF);
 		if(i%2 == 0)
 			_song_note(freqs[i], lengths[i]);
 		else

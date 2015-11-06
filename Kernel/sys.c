@@ -14,9 +14,7 @@ extern void _int_start_sound();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 	char c;
-
-	uint32_t arraySong[12] = {C4, F4S, G5, C4, A5, A4, B5, B4, G5, C4, A5, A4};
-	uint32_t lengths[12] = {400,25, 320, 400, 564, 234,543,766,234,300,400,500};
+	
 	int i;
 	
 	switch(order){
@@ -54,7 +52,7 @@ char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 			setPiano();
 			break;
 		case SONGS:
-			play_song(arraySong, lengths, 12);
+			read_song(arg1);
 			break;
 			
 	}
