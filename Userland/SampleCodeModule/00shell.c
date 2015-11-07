@@ -77,12 +77,23 @@ void shell_command(){
 }
 
 void shell_show_commands(){
+	shell_erase_screen();
+	print_message(" _          _       \n", 0xFF);
+	print_message("| |        | |      \n", 0xFF);
+	print_message("| |__   ___| |_ __  \n", 0xFF);
+	print_message("| '_ \\ / _ \\ | '_ \\ \n", 0xFF);
+	print_message("| | | |  __/ | |_) |\n", 0xFF);
+	print_message("|_| |_|\\___|_| .__/ \n", 0xFF);
+	print_message("             | |    \n", 0xFF);
+	print_message("             |_|    \n\n", 0xFF);
+	
 	for(int i=0 ;i<number_of_commands;i++){
 		print_message(commands[i].name, 0xFF);
 		print_message(" - ", 0xFF);
 		print_message(commands[i].description, 0xFF);
 		print_message("\n",0xFF);
 	}
+	print_message("\n", 0xFF);
 }
 
 void shell_erase_screen(){
