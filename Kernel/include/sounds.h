@@ -1,6 +1,8 @@
 #ifndef SOUNDS_H
 #define SOUNDS_H
 
+#define G3S 11492
+#define A3 10847
 #define C4 9121
 #define C4S 8609
 #define D4 8126
@@ -11,7 +13,7 @@
 #define G4 6087
 #define G4S 5743
 #define A4 5423
-#define AS 5119
+#define A4S 5119
 #define B4 4831
 #define C5 4560
 #define C5S 4304
@@ -25,7 +27,7 @@
 #define A5 2711
 #define A5S 2559
 #define B5 2415
-#define C5 2280
+#define C6 2280
  
  
 #include <stdint.h>
