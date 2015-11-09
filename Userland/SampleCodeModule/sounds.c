@@ -48,7 +48,7 @@ void songs(){
 		print_message("|   | Z | X | C | V | B | N | M |   |   |\n",0xFF);
 		print_message("|___|___|___|___|___|___|___|___|___|___|\n\n ",0xFF);
 
-		print_message("\nPress ESC to leave the piano\n");
+		print_message("\nPress ESC to leave the piano\n",0xFF);
 	
 		_call_int80(INT_PIANO);
 	
