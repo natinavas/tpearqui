@@ -14,9 +14,6 @@ extern void _int_start_sound();
 
 char sys_manager(int order,uint64_t arg1, uint64_t arg2){
 	char c;
-	
-	int i;
-	
 	switch(order){
 		case WRITE:
 			sys_write((char) arg1,(char) arg2);
