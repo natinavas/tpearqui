@@ -8,8 +8,8 @@ void beep(){
 void songs(){
 	int flag = 1;
 	print_message("Choose the number of the masterpiece you wish to hear: \n",0xFF);
-	print_message("1. song1\n", 0xFF);
-	print_message("2. song2\n", 0xFF);
+	print_message("1. Because - The Bits\n", 0xFF);
+	print_message("2. Piano Concerto No. 5 - Beethoven\n", 0xFF);
 	print_message("3. song3\n", 0xFF);
 	print_message("4. song4\n", 0xFF);
 	char aux[10];
