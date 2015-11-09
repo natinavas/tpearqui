@@ -20,6 +20,8 @@ void songs(){
 		if(value >= 0 && value <=4){
 			flag = 0;
 			_call_int80(INT_SONGS, value);
+		}else{
+			print_message("Please enter a valid number\n", 0xFF);
 		}
 	}
 }

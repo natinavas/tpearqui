@@ -31,7 +31,7 @@ int main(){
 	print_message("##         ##  ##     ## ##   ###  ##     ##            ##     ## ##    ## \n", 0xFF);
 	print_message("##        #### ##     ## ##    ## ####    ##             #######   ######  \n\n", 0xFF);
 	
-	
+	print_message("\nType help and hit enter to see available commands\n\n", 0xFF);
 	
 	init_commands(0,"clear", clear_str ,&shell_erase_screen);
 	init_commands(1,"time", time_str , &showRTC);
