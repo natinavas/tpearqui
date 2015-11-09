@@ -7,7 +7,7 @@ uint8_t left_shift = 0;
 uint8_t right_shift = 0;
 uint8_t caps_lock = 0;
 
-uint32_t keyboard[180][3] = {
+uint32_t keyboard[][3] = {
 	{0,0,0},//000
 	{0,0,8},//001 ESCAPE
 	{'1','!',0},	//002
