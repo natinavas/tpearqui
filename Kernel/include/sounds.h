@@ -30,7 +30,7 @@
 //#define C6 2280
 
 
-#define TEST (uint8_t*) 0x500000
+#define TEST (uint8_t*) 0x500003
  
  
 #include <stdint.h>

@@ -16,6 +16,10 @@ extern void _int_start_sound(uint32_t nFrequence);
 extern void _int_end_sound();
 //extern void nosound();
 
+uint32_t notes[26] = {11492, 10847, 9121, 8609, 8126, 7670, 7239, 6833, 6449, 6087,
+					  5743, 5423, 5119, 4831, 4560, 4304, 4063, 3834, 3619, 3416,
+					  3224, 3043, 2873, 2711, 2559, 2416};
+
 void read_song(uint64_t songNum){
 	if(songNum == 1){
 		play_song2(0);
@@ -151,16 +155,16 @@ void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 }
 
 void play_song2(uint8_t song){
-	uint32_t tempo = 1200;
-	while(1){
+	uint32_t tempo = 30;
 		int i = 0;
-		while(songsDirections[0][i] != 0){
-			uint32_t note = songsDirections[song][i];
-			uint32_t len = 1200;
-			_song_note(note, len);
+		while(songsDirections[song][i] != '0'){
+			uint32_t notePos = songsDirections[song][i] - 'A';
+			uint32_t note = notes[notePos];
+			uint32_t len = songsDirections[song][i+1] ;
+			uint32_t aux = tempo * len;
+			_song_note(note, aux);
 			i+=2;
 		}
-	}
 }
 
  void beep() {
