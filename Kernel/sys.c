@@ -8,6 +8,8 @@
 //syscall 5 ---> clear screen
 // syscall 6 ---> palabra que se escribio.
 //syscall 7 ---> beep
+//syscall 8 --> setea el piano
+// sysall 9 --> lee la cancion que se pasó por pararametro
 extern void _beep();
 extern void _int_start_sound();
 //extern void _int_piano_hand();
