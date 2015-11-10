@@ -1,33 +1,36 @@
 #ifndef SOUNDS_H
 #define SOUNDS_H
 
-#define G3S 11492
-#define A3 10847
-#define C4 9121
-#define C4S 8609
-#define D4 8126
-#define D4S 7670
-#define E4 7239
-#define F4 6833
-#define F4S 6449 
-#define G4 6087
-#define G4S 5743
-#define A4 5423
-#define A4S 5119
-#define B4 4831
-#define C5 4560
-#define C5S 4304
-#define D5 4063
-#define D5S 3834
-#define E5 3619
-#define F5 3416
-#define F5S 3224
-#define G5 3043
-#define G5S 2873
-#define A5 2711
-#define A5S 2559
-#define B5 2415
-#define C6 2280
+#define A 11492 //G3S 
+#define B 10847 //A3 
+#define C 9121 //C4 
+#define D 8609 //C4S 
+#define E 8126 //D4 
+#define F 7670 //D4S 
+#define G 7239 //E4 
+#define H 6833 //F4 
+#define I 6449 //F4S  
+#define J 6087 //G4 
+#define K 5743 //G4S 
+#define L 5423 //A 
+#define M 5119 //A4S
+#define N 4831 //B4 
+#define O 4560 //C5 
+#define P 4304 //C5S
+#define Q 4063 //D5 
+#define R 3834 //D5S
+#define S 3619 //E5 
+#define T 3416 //F5 
+#define U 3224 //F5S
+#define V 3043 //G5 
+#define W 2873 //G5S
+#define X 2711 //A5 
+#define Y 2559 //A5S
+#define Z 2416 //B5 
+//#define C6 2280
+
+
+#define TEST (uint8_t*) 0x500000
  
  
 #include <stdint.h>
@@ -38,5 +41,6 @@ void nosound();
 void read_song(uint64_t songNum);
 void playPiano(uint32_t frec);
 void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size);
+void play_song2(uint8_t song);
 
 #endif

@@ -7,7 +7,7 @@ sampleCodeModule:
 	cd SampleCodeModule; make all
 
 sampleDataModule:
-	printf “E4SNE4SNE4SN” >> $(SAMPLE_DATA) && dd if=/dev/zero bs=1 count=1 >> $(SAMPLE_DATA)
+	printf “E1D2C10” >> $(SAMPLE_DATA) && dd if=/dev/zero bs=1 count=1 >> $(SAMPLE_DATA)
 
 clean:
 	cd SampleCodeModule; make clean

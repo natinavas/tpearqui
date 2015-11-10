@@ -3,6 +3,8 @@
 
 void play_sound(uint32_t nFrequence); 
 
+static uint8_t * const songsDirections[1] = {TEST};
+
 extern void outb(uint8_t, uint8_t);
 extern uint8_t inb(uint8_t);
 extern void _song_note(uint32_t frec, uint32_t length);
@@ -14,10 +16,11 @@ extern void _int_start_sound(uint32_t nFrequence);
 extern void _int_end_sound();
 //extern void nosound();
 
-//1600 negra
-
 void read_song(uint64_t songNum){
 	if(songNum == 1){
+		play_song2(0);
+	}
+	/*if(songNum == 1){
 		uint32_t arraySong[73] = 	{C4S, G4S, C5S, E5, C5S, G4S, E4, G4S, 
 									C4S, G4S, C5S, E5, C5S, G4S, E4, G4S,
 									D4S, A4, C5S, D5S, C5S, A4, E4, F4S,
@@ -48,7 +51,7 @@ void read_song(uint64_t songNum){
 									400, 400, 400, 400, 1200, 1200, 2000, 800, 800,
 									400, 400, 400, 400, 1600, 800, 1600, 400, 800, 800, 1200, 3200};
 		play_song(arraySong2, lengths2, 28);
-	}
+	}*/
 }
 
 
@@ -64,6 +67,18 @@ void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 	}	
 }
 
+void play_song2(uint8_t song){
+	uint32_t tempo = 1200;
+	while(1){
+		int i = 0;
+		while(songsDirections[0][i] != 0){
+			uint32_t note = songsDirections[song][i];
+			uint32_t len = 1200;
+			_song_note(note, len);
+			i+=2;
+		}
+	}
+}
 
  void beep() {
  	 play_sound(440);
