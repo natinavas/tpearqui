@@ -30,7 +30,8 @@
 //#define C6 2280
 
 
-#define TEST (uint8_t*) 0x500003
+#define BECAUSE (uint8_t*) 0x500003
+#define RICKROLL (uint8_t*) 0x50009D
  
  
 #include <stdint.h>
@@ -41,6 +42,6 @@ void nosound();
 void read_song(uint64_t songNum);
 void playPiano(uint32_t frec);
 void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size);
-void play_song2(uint8_t song);
+void play_song2(uint8_t song, uint32_t tempo);
 
 #endif

@@ -3,7 +3,7 @@
 
 void play_sound(uint32_t nFrequence); 
 
-static uint8_t * const songsDirections[1] = {TEST};
+static uint8_t * const songsDirections[2] = {BECAUSE,RICKROLL};
 
 extern void outb(uint8_t, uint8_t);
 extern uint8_t inb(uint8_t);
@@ -22,13 +22,26 @@ uint32_t notes[26] = {11492, 10847, 9121, 8609, 8126, 7670, 7239, 6833, 6449, 60
 
 void read_song(uint64_t songNum){
 	if(songNum == 1){
-		play_song2(0);
+		play_song2(0,1200);
+	}
+	// else if(songNum == 2 ){
+	// 	uint32_t arraySong2[25] =  {K, M, P, M, T,  T,  R,
+	// 								K, M, P, M, R, R, P,
+	// 								K, M, P, M, P, R, O, M, K, R,P};
+	// 	uint32_t lengths2[25] =	   {400, 400, 400, 400, 1200, 1200, 2400,
+	// 								400, 400, 400, 400, 1200, 1200, 2400, 
+	// 								400, 400, 400, 400, 1600, 800, 1600, 800, 1600, 1600, 3200};
+	// 	play_song(arraySong2, lengths2, 25);
+	// }
+	if(songNum == 2){
+		play_song2(1,1200);
 	}
 	/*if(songNum == 1){
 		uint32_t arraySong[73] = 	{C4S, G4S, C5S, E5, C5S, G4S, E4, G4S, 
 									C4S, G4S, C5S, E5, C5S, G4S, E4, G4S,
 									D4S, A4, C5S, D5S, C5S, A4, E4, F4S,
 									D4S, G4S, C5, D5S, C5, G4S, G3S, G4S,
+									
 									A3, A4, C5S, E5, C5S, A4, E4, A4,
 									C4S, G4S, C5S, E5, C5S, G4S, G3S, G4S,
 									A3, G4, C5S, G5, C5S, G4, E4, G4,
@@ -154,13 +167,12 @@ void play_song(uint32_t freqs[], uint32_t lengths[], uint32_t size){
 
 }
 
-void play_song2(uint8_t song){
-	uint32_t tempo = 30;
+void play_song2(uint8_t song, uint32_t tempo){
 		int i = 0;
 		while(songsDirections[song][i] != '0'){
 			uint32_t notePos = songsDirections[song][i] - 'A';
 			uint32_t note = notes[notePos];
-			uint32_t len = songsDirections[song][i+1] ;
+			uint8_t len = songsDirections[song][i+1] - '0';
 			uint32_t aux = tempo * len;
 			_song_note(note, aux);
 			i+=2;
